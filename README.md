@@ -25,7 +25,7 @@ except:
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
 ### Demo 실행
-* RecognitionModel에서 실행
+* RecognitionModel에서 demo 실행
 ```
 import shutil
 !python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=../cropImages/237
