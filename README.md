@@ -7,20 +7,25 @@
 
 ### Hyperparameters
 Loss Criterion: CTCLoss
+
 Batch_size: 96
+
 Epochs: 300,000 
+
 Validation: 1회 / 10,000 epochs
+
 Evaluation Dataset: ‘IIIT5k_3000’, ‘SVT’ 등 유명한 10가지의 dataset
+
 Confidence Score: Text값이 얼마나 신뢰할 수 있는 지 Training과 Evaluation에서 모두 계산
 
 ### Confidence Score 계산 코드
+'''
 try:
     confidence_score = pred_max_prob.cumprod(dim=0)[-1]
 except:
     confidence_score = 0 
     confidence_score_list.append(confidence_score)
-
-
+'''
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
 ## Text Detection 모델: CRAFT Text detector
