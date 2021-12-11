@@ -92,4 +92,3 @@ python test.py --trained_model=[weightfile] --test_folder=[folder path to test i
 ## Data path 
 - AI허브 개방 데이터 - 비전 - 한국어 글자체 이미지 - Text in the wild - 01_textinthewild_goods_images_new
 - AI허브 개방 데이터 - 국토환경 - 관광 지식베이스 - 한국 관광 POI데이터셋 - 크롤링_메뉴판
-
