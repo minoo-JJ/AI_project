@@ -25,42 +25,51 @@ except:
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
 ### Demo 실행
-* RecognitionModel에서 demo 실행
+* 실행 환경
+- python 3.7.11
+- pytorch 1.9.1
+- torchvision 0.10.1
+- 
+* GPU Setting
+- NVIDIA GeForce RTX 3060
+- cudatoolkit 11.1
+---
+> 실행 환경 : python 3.7.11, pytorch 1.9.1, torchvision 0.10.1
+
+> GPU Setting : NVIDIA GeForce RTX 3060, cudatoolkit 11.1
+
+#### Arguments
+* `--isTraining`: Determining whether to train model or not
+* `--isTesting`: Determining whether to test model or not
+* `--isDemoing`: Determining whether to test model or not using your own dataset
+
+ 기본 Setting
+제출한 폴더의 파일을 모두 다운받은 후에 <b>RecognitionModel 파일에 들어간 후</b> 아래 Demo를 진행해주세요. (Data는 직접 processing한 상태를 기반했습니다, Pre-processing 파일은 무시하셔도 됩니다; 용량 문제)
+
+* 기본 command
+```python
+python Team6_recognition.py --isTraining [true/false] --isTesting [true/false] --isDemoing [true/false]
 ```
-import shutil
-!python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=../cropImages/237
+> 아무것도 입력하지 않으면 기본적으로 Demo로 진행됩니다.
 
-opt = demoOpt()
 
-if executeDemo == True:
-    if opt.sensitive:
-        opt.character = string.printable[:-6]
-
-    cudnn.benchmark = True
-    cudnn.deterministic = True
-    opt.num_gpu = torch.cuda.device_count()
-    predLists = []
-
-    fileNum = len(os.listdir("./demoImages"))
-
-    for i in range(fileNum):
-        opt.image_folder = "./demoImages/" + os.listdir("./demoImages")[i]
-        predLists.append(demo(opt))
-    
-    for i in range(fileNum):
-        dir_path = "./demoImages/" + os.listdir("./demoImages")[0]
-        if os.path.exists(dir_path):
-            shutil.rmtree(dir_path)
-    
-    for x in predLists:
-        predicted_string = ""
-        for y in x:
-            predicted_string += y +' '
-        print(predicted_string)
+* Training / Testing command
+```python
+python Team6_recognition.py --isTraining true --isTesting true
 ```
-두 번째 행 맨 뒤의 숫자만 바꾸어서 demo 실행
+>이 경우, 이미 만들어진 lmdb dataset을 갖고 training과 testing을 진행합니다.
 
-e.g. --test_folder=../crepImages/3
+<br/>
+
+* Demoing command (순서 중요)
+```python
+python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=./cropImages/1 
+python Team6_recognition.py --isDemoing true
+```
+> ./cropImages/ 뒤의 숫자를 바꾸어 여러 demo를 확인하실 수 있습니다. 뒤의 숫자는 1부터 33, 총 33개의 demo를 준비해두었습니다.
+
+
+
 
 ## Text Detection 모델: CRAFT Text detector
 CRAFT text detector는 각 글자의 위치와 근처의 글자들과의 affinity를 찾아서 text bounding box를 만들어주는 pytorch 모델이다.
