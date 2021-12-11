@@ -27,9 +27,38 @@ numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환
 ### Demo 실행
 * RecognitionModel에서 실행
 ```
-python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=../crepImages/237
+import shutil
+!python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=../cropImages/237
+
+opt = demoOpt()
+
+if executeDemo == True:
+    if opt.sensitive:
+        opt.character = string.printable[:-6]
+
+    cudnn.benchmark = True
+    cudnn.deterministic = True
+    opt.num_gpu = torch.cuda.device_count()
+    predLists = []
+
+    fileNum = len(os.listdir("./demoImages"))
+
+    for i in range(fileNum):
+        opt.image_folder = "./demoImages/" + os.listdir("./demoImages")[i]
+        predLists.append(demo(opt))
+    
+    for i in range(fileNum):
+        dir_path = "./demoImages/" + os.listdir("./demoImages")[0]
+        if os.path.exists(dir_path):
+            shutil.rmtree(dir_path)
+    
+    for x in predLists:
+        predicted_string = ""
+        for y in x:
+            predicted_string += y +' '
+        print(predicted_string)
 ```
-맨 뒤 숫자만 바꾸어서 demo 실행
+두 번째 행 맨 뒤의 숫자만 바꾸어서 demo 실행
 e.g. --test_folder=../crepImages/3
 
 ## Text Detection 모델: CRAFT Text detector
