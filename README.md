@@ -24,8 +24,8 @@ except:
 ```
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
-### Demo 실행
---
+Demo 실행
+---
 #### 실행 환경
 - python 3.7.11
 - pytorch 1.9.1
