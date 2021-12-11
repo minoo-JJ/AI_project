@@ -25,14 +25,6 @@ except:
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
 ### Demo 실행
-* 실행 환경
-- python 3.7.11
-- pytorch 1.9.1
-- torchvision 0.10.1
-- 
-* GPU Setting
-- NVIDIA GeForce RTX 3060
-- cudatoolkit 11.1
 ---
 > 실행 환경 : python 3.7.11, pytorch 1.9.1, torchvision 0.10.1
 
@@ -58,8 +50,6 @@ python Team6_recognition.py --isTraining [true/false] --isTesting [true/false] -
 python Team6_recognition.py --isTraining true --isTesting true
 ```
 >이 경우, 이미 만들어진 lmdb dataset을 갖고 training과 testing을 진행합니다.
-
-<br/>
 
 * Demoing command (순서 중요)
 ```python
