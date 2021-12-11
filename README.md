@@ -59,6 +59,7 @@ if executeDemo == True:
         print(predicted_string)
 ```
 두 번째 행 맨 뒤의 숫자만 바꾸어서 demo 실행
+
 e.g. --test_folder=../crepImages/3
 
 ## Text Detection 모델: CRAFT Text detector
