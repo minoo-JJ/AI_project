@@ -22,7 +22,6 @@ pip install -r requirements.txt
 ``` (with python 3.7)
 python test.py --trained_model=[weightfile] --test_folder=[folder path to test images]
 ```
-
 결과 이미지는 './result' 에 저장된다.
 
 ### Arguments
