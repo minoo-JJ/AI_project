@@ -1,9 +1,9 @@
-# 메뉴판 이미지 인식을 통해 text로 변환  
+# Implementation of Deep-Learning model extracting text in menu using text detection and text recognition  
 
 ## Overview
 ![image](https://user-images.githubusercontent.com/80943639/145672300-435f6f82-73d0-40ff-bd8b-34acbec058f1.png)
 
-## CRAFT: Text detection을 위한 글자 영역 인식
+## Text Detection 모델: CRAFT Text detector
 CRAFT text detector는 각 글자의 위치와 근처의 글자들과의 affinity를 찾아서 text bounding box를 만들어주는 pytorch 모델이다.
 Text의 boundung box는 글자 구역과 affinity 점수를 이용해 thresholding한 후 가장 작은 bounding box를 return하는 형태로 만들어진다.
 우리는 메뉴를 잘 인식하도록 threshold를 조정하여 얻어진 bounding box 부분을 crop하여 이미지 파일로 저장하도록 코드를 변형하였다.
@@ -39,3 +39,7 @@ python test.py --trained_model=[weightfile] --test_folder=[folder path to test i
 * `--test_folder`: folder path to input images
 * `--refine`: use link refiner for sentense-level dataset
 * `--refiner_model`: pretrained refiner model
+
+## 사용 data
+1. AI 허브(국토환경): 관광 지식베이스 - 한국 관광 POI 데이터셋 - 메뉴판 이미지
+2. AI 허브(비전): 한국어 글자체 이미지 - 손글씨  
