@@ -4,17 +4,14 @@
 ![image](https://user-images.githubusercontent.com/80943639/145672300-435f6f82-73d0-40ff-bd8b-34acbec058f1.png)
 
 ## Text recognition 모델
+Text Recognition Model은 300,000번의 Epoch로 한국어 글자체 이미지를 pretraining한 모델을 사용하였다. Traing 결과 Test Accuracy는 88%에 달했고 한국어 뿐만 아니라 영어와 숫자 또한 인식할 수 있다는 점에서 유효한 결과를 보였다. 
 
 ### Hyperparameters
 - `Loss Criterion`: CTCLoss
 - `Batch_size`: 96
-
 - `Epochs`: 300,000 
-
 - `Validation`: 1회 / 10,000 epochs
-
 - `Evaluation Dataset`: ‘IIIT5k_3000’, ‘SVT’ 등 유명한 10가지의 dataset
-
 - `Confidence Score`: Text값이 얼마나 신뢰할 수 있는 지 Training과 Evaluation에서 모두 계산
 
 ### Confidence Score 계산 코드
@@ -30,9 +27,9 @@ numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환
 ### Demo 실행
 RecognitionModel에서 실행
 ```
-python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k_pth --test_folder=../crepImages/237
+python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k.pth --test_folder=../crepImages/237
 ```
-맨 뒤 숫자만 바꾸어서 실행하면 된다.
+맨 뒤 숫자만 바꾸어서 demo 실행
 e.g. --test_folder=../crepImages/3
 
 ## Text Detection 모델: CRAFT Text detector
@@ -44,9 +41,9 @@ Text의 boundung box는 글자 구역과 affinity 점수를 이용해 thresholdi
 
 * pretrained model 실행
 ``` (with python 3.7)
-python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k_pth --test_folder=../crepImages/237
+python test.py --trained_model=[weightfile] --test_folder=[folder path to test images]
 ```
-결과 이미지는 './result' 에 저장된다.
+결과 이미지는 './result' 에 저장
 
 ### Arguments
 * `--trained_model`: pretrained model (craft_mlt_25k.pth)
