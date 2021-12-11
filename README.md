@@ -27,28 +27,24 @@ except:
 ```
 numpy의 cumprod를 사용하여 pred_max_prob 변수의 누적 곱들로 반환하였다
 
-
+### Demo 실행
+RecognitionModel에서 실행
+```
+python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k_pth --test_folder=../crepImages/237
+```
+맨 뒤 숫자만 바꾸어서 실행하면 된다.
+e.g. --test_folder=../crepImages/3
 
 ## Text Detection 모델: CRAFT Text detector
 CRAFT text detector는 각 글자의 위치와 근처의 글자들과의 affinity를 찾아서 text bounding box를 만들어주는 pytorch 모델이다.
 Text의 boundung box는 글자 구역과 affinity 점수를 이용해 thresholding한 후 가장 작은 bounding box를 return하는 형태로 만들어진다.
 우리는 메뉴를 잘 인식하도록 threshold를 조정하여 얻어진 bounding box 부분을 crop하여 이미지 파일로 저장하도록 코드를 변형하였다.
 
-### Install dependencies
-#### Requirements
-- PyTorch>=0.4.1
-- torchvision>=0.2.1
-- opencv-python>=3.4.2
-- check requiremtns.txt
-```
-pip install -r requirements.txt
-```
-
 ### Pretrained 모델을 이용하여 test 진행
 
-* Run with pretrained model
+* pretrained model 실행
 ``` (with python 3.7)
-python test.py --trained_model=[weightfile] --test_folder=[folder path to test images]
+python ../DetectionModel/test.py --trained_model=../DetectionModel/craft_mlt_25k_pth --test_folder=../crepImages/237
 ```
 결과 이미지는 './result' 에 저장된다.
 
