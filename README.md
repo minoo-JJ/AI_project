@@ -5,7 +5,7 @@
 
 ## Text recognition 모델
 
-###
+### Hyperparameters
 Loss Criterion: CTCLoss
 Batch_size: 96
 Epochs: 300,000 
