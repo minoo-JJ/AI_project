@@ -3,6 +3,73 @@
 ## Overview
 ![image](https://user-images.githubusercontent.com/80943639/145672300-435f6f82-73d0-40ff-bd8b-34acbec058f1.png)
 
+## File Tree Structure
+제출한 파일은 다음과 같은 파일 구조입니다.
+
+```
+Team6.zip
+│   README.md
+│
+└───DetectionModel
+│   │   craft_mlt_25k.pth
+│   │   craft_utils.py
+│   │   craft.py
+│   │   file_utils.py
+│   │   imgproc.py
+│   │   refinenet.py
+│   │   test.py
+│   │   
+│   └───basenet
+│       │   __init__.py
+│       └───vgg16_bn.py
+│       
+└───Pre-processing
+│   └───────For Detection Result
+│   │   │   K-TourNet_CR_Menubook_Annotation.json
+│   │   │   parsing.py
+│   │   │
+│   │   └── K-TourNet_CR_Menubook_Annotation
+│   │
+│   └──For Recognition Training
+│       │   preprocessing1.py
+│       │   preprocessing2.py
+│       └───textinthewild_data_info.json
+│       
+└───RecognitionModel
+│   │   Team6_recognition.ipynb
+│   │   Team6_recognition.py
+│   │   create_lmdb_dataset.py
+│   │   
+│   └───data_lmdb
+│   │   └───test
+│   │   │   │   data.mdb
+│   │   │   └───lock.mdb
+│   │   └───train
+│   │   │   │   data.mdb
+│   │   │   └───lock.mdb
+│   │   └───validation
+│   │       │   data.mdb
+│   │       └───lock.mdb
+│   └───demoImages
+│   └───result
+│   │   └───TPS-ResNet-BiLSTM-CTC-Seed1111_best_accuracy.pth
+│   └───saved_models 
+│       └───TPS-ResNet-BiLSTM-CTC-Seed1111
+│           │   best_accuracy.pth
+│           │   best_norm_ED.pth
+│           │   iter_100000.pth
+│           │   iter_200000.pth
+│           │   iter_300000.pth
+│           │   log_dataset.txt
+│           │   log_train.txt
+│           └───opt.txt
+└── cropImages
+    │   1
+    │   2
+    │   3
+    └───  ...
+```
+
 ## Text recognition 모델
 Text Recognition Model은 300,000번의 Epoch로 한국어 글자체 이미지를 pretraining한 모델을 사용하였다. Traing 결과 Test Accuracy는 88%에 달했고 한국어 뿐만 아니라 영어와 숫자 또한 인식할 수 있다는 점에서 유효한 결과를 보였다. 
 
